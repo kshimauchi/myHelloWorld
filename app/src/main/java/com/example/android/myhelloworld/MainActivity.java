@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         /*Add and Action Listener for the button*/
         addListenerOnButton();
-        blink();
+        //blink();
 
     }
     /*Add Action Listener method for the Button */
@@ -37,37 +37,9 @@ public class MainActivity extends AppCompatActivity {
         });//setOnClickListener
     }//addListenerOnButton
 
-    /*Blink */
-    private void blink(){
-        /* When you create a new Handler, it is bound to the thread /
-        message queue of the thread that is creating it - */
-        //https://stackoverflow.com/questions/9294112/how-to-make-the-textview-blinking
-        //This can also be accomplished by using an animation.
-        final Handler handler = new Handler();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int timeToBlink = 1000;    //in milliseconds
-
-                try{Thread.sleep(timeToBlink);}catch (Exception e) {}
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView txt = (TextView) findViewById(R.id.textView);
-                        if(txt.getVisibility() == View.VISIBLE){
-                            txt.setVisibility(View.INVISIBLE);
-                        }else{
-                            txt.setVisibility(View.VISIBLE);
-                        }
-                        blink();
-                    }
-                });
-            }
-        }).start();
     }
-}
+
 
 
 
